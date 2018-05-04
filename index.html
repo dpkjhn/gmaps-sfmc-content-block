@@ -66,8 +66,14 @@
 
     <script>
         let sdk = new window.sfdc.BlockSDK(); //initalize SDK
+
+        var apiKey = document.getElementById('apiKey');
+        var mapWidth = document.getElementById('mapWidth');
+        var mapHeight = document.getElementById('mapHeight');
+        var mapCentre = document.getElementById('mapCentre');
+
         sdk.setContent(""); //resets content block
-        sdk.setContent('<img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=Albany,+NY&zoom=12&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of Albany, NY">');
+        sdk.setContent('<img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=' + mapCentre + '&zoom=12&scale=1&size=' + mapWidth + 'x' + mapHeight + '&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map>');
     </script>
 
 </body>
