@@ -71,23 +71,24 @@
         var mapWidth = document.getElementById('mapWidth').value;
         var mapHeight = document.getElementById('mapHeight').value;
         var mapCentre = document.getElementById('mapCentre').value;
-
-        console.log('apiKey' + apiKey);
-        console.log('mapWidth' + mapWidth);
-        console.log('mapHeight' + mapHeight);
-        console.log('mapCentre' + mapCentre);
-
-        let dataObject = {
-            apiKey: apiKey,
-            mapCentre: mapCentre,
-            mapHeight: mapHeight,
-            mapWidth: mapWidth
-        }
-
-        sdk.setData(dataObject, (newDataObject) => {});
-
         let defualtContent = '<img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=London,+UK&zoom=12&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of Albany, NY">';
 
+        // console.log('apiKey' + apiKey);
+        // console.log('mapWidth' + mapWidth);
+        // console.log('mapHeight' + mapHeight);
+        // console.log('mapCentre' + mapCentre);
+        // let dataObject = {};
+
+        if (Object.keys(dataObject).length == 0) {
+            dataObject = {
+                apiKey: apiKey,
+                mapCentre: mapCentre,
+                mapHeight: mapHeight,
+                mapWidth: mapWidth
+            }
+        } else {
+            sdk.getData((dataObject) => {});
+        }
 
         sdk.setSuperContent(defualtContent, (newSuperContent) => {
             defualtContent = newSuperContent;
@@ -107,7 +108,7 @@
         //             });
         //         }); -->
 
-        sdk.setContent('<img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=' + mapCentre + '&zoom=12&scale=1&size=' + mapWidth + 'x' + mapHeight + '&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map>');
+        sdk.setContent('<h1>' + JSON.stringify(dataObject) + '</h1>');
     </script>
 
 </body>
