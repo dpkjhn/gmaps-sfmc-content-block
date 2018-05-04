@@ -77,6 +77,15 @@
         console.log('mapHeight' + mapHeight);
         console.log('mapCentre' + mapCentre);
 
+        let dataObject = {
+            apiKey: apiKey,
+            mapCentre: mapCentre,
+            mapHeight: mapHeight,
+            mapWidth: mapWidth
+        }
+
+        sdk.setData(dataObject, (newDataObject) => {});
+
         let defualtContent = '<img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=London,+UK&zoom=12&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of Albany, NY">';
 
 
