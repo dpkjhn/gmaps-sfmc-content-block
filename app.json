@@ -3,5 +3,5 @@
     "description": "Google Maps Content Block for Salesforce Marketing Cloud",
     "repository": "https://github.com/dpkjhn/gmaps-sfmc-content-block",
     "logo": "https://github.com/dpkjhn/gmaps-sfmc-content-block/blob/master/icon.png",
-    "keywords": ["node", "saleforce", "static"]
+    "keywords": ["node", "salesforce", "static"]
 }
