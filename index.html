@@ -78,25 +78,25 @@
         // console.log('mapHeight' + mapHeight);
         // console.log('mapCentre' + mapCentre);
         // let dataObject = {};
-
-        if (Object.keys(dataObject).length == 0) {
-            dataObject = {
-                apiKey: apiKey,
-                mapCentre: mapCentre,
-                mapHeight: mapHeight,
-                mapWidth: mapWidth
+        sdk.getData((dataObject) => {
+            if (Object.keys(dataObject).length == 0) {
+                dataObject = {
+                    apiKey: apiKey,
+                    mapCentre: mapCentre,
+                    mapHeight: mapHeight,
+                    mapWidth: mapWidth
+                }
+            } else {
+                sdk.getData((dataObject) => {});
             }
-        } else {
-            sdk.getData((dataObject) => {});
-        }
+        })
+
 
         sdk.setSuperContent(defualtContent, (newSuperContent) => {
             defualtContent = newSuperContent;
         });
 
-        sdk.getData((dataObject) => {
-            console.log(JSON.stringify(dataObject));
-        })
+
 
         // <!-- 
         //         sdk.getContent((content) => {
