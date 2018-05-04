@@ -65,57 +65,60 @@
     <script src="/blocksdk.js"></script>
 
     <script>
-        let sdk = new window.sfdc.BlockSDK(); //initalize SDK
+        window.onbeforeunload = () => {
 
-        let dataObject = {
-            apiKey: document.getElementById('apiKey').value,
-            mapCentre: document.getElementById('mapCentre').value,
-            mapHeight: document.getElementById('mapHeight').value,
-            mapWidth: document.getElementById('mapWidth').value
-        };
+            let sdk = new window.sfdc.BlockSDK(); //initalize SDK
 
-        let defualtContent = '<img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=London,+UK&zoom=12&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of Albany, NY">';
+            let dataObject = {
+                apiKey: document.getElementById('apiKey').value,
+                mapCentre: document.getElementById('mapCentre').value,
+                mapHeight: document.getElementById('mapHeight').value,
+                mapWidth: document.getElementById('mapWidth').value
+            };
 
-        console.log(JSON.stringify(dataObject));
+            let defualtContent = '<img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=London,+UK&zoom=12&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of Albany, NY">';
 
-        // console.log('apiKey' + apiKey);
-        // console.log('mapWidth' + mapWidth);
-        // console.log('mapHeight' + mapHeight);
-        // console.log('mapCentre' + mapCentre);
-        // let dataObject = {};
-        sdk.getData((data) => {
-            if (Object.keys(data).length == 0) {
-                data = dataObject;
-                console.log('No data!');
+            console.log(JSON.stringify(dataObject));
 
-            } else {
-                console.log('Setting data');
+            // console.log('apiKey' + apiKey);
+            // console.log('mapWidth' + mapWidth);
+            // console.log('mapHeight' + mapHeight);
+            // console.log('mapCentre' + mapCentre);
+            // let dataObject = {};
+            sdk.getData((data) => {
+                if (Object.keys(data).length == 0) {
+                    data = dataObject;
+                    console.log('No data!');
 
-                document.getElementById('apiKey').value = data.apiKey;
-                document.getElementById('mapWidth').value = data.mapWidth;
-                document.getElementById('mapHeight').value = data.mapHeight;
-                document.getElementById('mapCentre').value = data.mapCentre;
-            }
-        })
+                } else {
+                    console.log('Setting data');
 
-
-        // sdk.setSuperContent(defualtContent, (newSuperContent) => {
-        //     defualtContent = newSuperContent;
-        // });
+                    document.getElementById('apiKey').value = data.apiKey;
+                    document.getElementById('mapWidth').value = data.mapWidth;
+                    document.getElementById('mapHeight').value = data.mapHeight;
+                    document.getElementById('mapCentre').value = data.mapCentre;
+                }
+            })
 
 
+            // sdk.setSuperContent(defualtContent, (newSuperContent) => {
+            //     defualtContent = newSuperContent;
+            // });
 
-        // <!-- 
-        //         sdk.getContent((content) => {
-        //             content += '.';
-        //             console.log('-- Content: ' + content);
 
-        //             sdk.setContent(content, (setContent) => {
-        //                 // block content is now its original content + '.'
-        //             });
-        //         }); -->
 
-        sdk.setContent('<h1>' + JSON.stringify(dataObject) + '</h1>');
+            // <!-- 
+            //         sdk.getContent((content) => {
+            //             content += '.';
+            //             console.log('-- Content: ' + content);
+
+            //             sdk.setContent(content, (setContent) => {
+            //                 // block content is now its original content + '.'
+            //             });
+            //         }); -->
+
+            sdk.setContent('<h1>' + JSON.stringify(dataObject) + '</h1>');
+        }
     </script>
 
 </body>
