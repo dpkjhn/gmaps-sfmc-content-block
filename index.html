@@ -85,18 +85,18 @@
         });
 
         sdk.getData((dataObject) => {
-            console.log(JSON.parse(dataObject));
+            console.log(JSON.stringify(dataObject));
         })
 
+        // <!-- 
+        //         sdk.getContent((content) => {
+        //             content += '.';
+        //             console.log('-- Content: ' + content);
 
-        sdk.getContent((content) => {
-            content += '.';
-            console.log('-- Content: ' + content);
-
-            sdk.setContent(content, (setContent) => {
-                // block content is now its original content + '.'
-            });
-        });
+        //             sdk.setContent(content, (setContent) => {
+        //                 // block content is now its original content + '.'
+        //             });
+        //         }); -->
 
         sdk.setContent('<img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=' + mapCentre + '&zoom=12&scale=1&size=' + mapWidth + 'x' + mapHeight + '&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map>');
     </script>
