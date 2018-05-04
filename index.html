@@ -71,8 +71,6 @@
         var mapWidth = document.getElementById('mapWidth');
         var mapHeight = document.getElementById('mapHeight');
         var mapCentre = document.getElementById('mapCentre');
-
-        sdk.setContent(""); //resets content block
         sdk.setContent('<img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=' + mapCentre + '&zoom=12&scale=1&size=' + mapWidth + 'x' + mapHeight + '&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map>');
     </script>
 
