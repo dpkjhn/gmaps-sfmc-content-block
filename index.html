@@ -80,6 +80,11 @@
         let saveData = () => {
             console.log('Saving data...');
 
+            mapData.apiKey = document.getElementById('apiKey').value;
+            mapData.mapWidth = document.getElementById('mapWidth').value;
+            mapData.mapHeight = document.getElementById('mapHeight').value;
+            mapData.mapCentre = document.getElementById('mapCentre').value;
+
 
             // document.getElementById('apiKey').value = mapData.apiKey;
             // document.getElementById('mapWidth').value = mapData.mapWidth;
