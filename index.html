@@ -107,6 +107,10 @@
             sdk.getData((data) => {
                 if (Object.keys(data).length > 0) {
                     mapData = data;
+                    document.getElementById('apiKey').value = mapData.apiKey;
+                    document.getElementById('mapWidth').value = mapData.mapWidth;
+                    document.getElementById('mapHeight').value = mapData.mapHeight;
+                    document.getElementById('mapCentre').value = mapData.mapCentre;
                     console.log('Found data!');
                 }
             });
@@ -131,7 +135,7 @@
         //             });
         //         }); -->
 
-        sdk.setContent('<h1>' + JSON.stringify(mapData) + '</h1>');
+        sdk.setContent('<img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=' + mapData.mapCentre + '&zoom=12&scale=1&size=' + mapData.mapWidth + 'x' + mapData.mapHeight + '&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of Albany, NY">');
 
         window.onload = fetchData;
         window.onunload = saveData;
