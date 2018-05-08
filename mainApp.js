@@ -49,6 +49,8 @@ let fetchData = () => {
             document.getElementById('mapWidth').value = mapData.mapWidth;
             document.getElementById('mapHeight').value = mapData.mapHeight;
             document.getElementById('mapCentre').value = mapData.mapCentre;
+            document.getElementById('mapZoom').value = mapData.mapZoom;
+
             // console.log('Found data!');
         }
     });
