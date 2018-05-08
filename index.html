@@ -72,7 +72,11 @@
             apiKey: '',
             mapCentre: 'London, UK',
             mapHeight: 300,
-            mapWidth: 600
+            mapWidth: 600,
+            mapMarker: {
+                color: '0xff0000',
+                label: 'London, UK'
+            }
         };
 
         let defualtContent = '<img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=London,+UK&zoom=12&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of Albany, NY">';
@@ -85,16 +89,9 @@
             mapData.mapHeight = document.getElementById('mapHeight').value;
             mapData.mapCentre = document.getElementById('mapCentre').value;
 
-
-            // document.getElementById('apiKey').value = mapData.apiKey;
-            // document.getElementById('mapWidth').value = mapData.mapWidth;
-            // document.getElementById('mapHeight').value = mapData.mapHeight;
-            // document.getElementById('mapCentre').value = mapData.mapCentre;
-
             sdk.setData(mapData, (data) => {
-                // data = dataObject;
-                sdk.setContent('<img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=' + mapData.mapCentre + '&zoom=12&scale=1&size=' + mapData.mapWidth + 'x' + mapData.mapHeight + '&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of Albany, NY">');
-
+                mapData = data;
+                sdk.setContent('<img width="100%" src="https://maps.googleapis.com/maps/api/staticmap?center=' + mapData.mapCentre + '&zoom=12&scale=1&size=' + mapData.mapWidth + 'x' + mapData.mapHeight + '&maptype=roadmap&format=png&visual_refresh=true&&markers=size:mid%7Ccolor:' + mapData.mapMarker.color + '%7Clabel:%7C"' + mapData.mapCentre + 'alt="Google Map">');
             });
 
             console.log(JSON.stringify(mapData));
@@ -125,31 +122,12 @@
         }
 
 
-        // sdk.setSuperContent(defualtContent, (newSuperContent) => {
-        //     defualtContent = newSuperContent;
-        // });
-
-
-
-        // <!-- 
-        //         sdk.getContent((content) => {
-        //             content += '.';
-        //             console.log('-- Content: ' + content);
-
-        //             sdk.setContent(content, (setContent) => {
-        //                 // block content is now its original content + '.'
-        //             });
-        //         }); -->
-
-
-        let winsubmit = () => {
-            console.log('OnSubmit');
-
-        }
+        sdk.setSuperContent(defualtContent, (newSuperContent) => {
+            defualtContent = newSuperContent;
+        });
 
         window.onload = fetchData;
         window.onchange = saveData;
-        window.onsubmit = winsubmit;
     </script>
 
 </body>
