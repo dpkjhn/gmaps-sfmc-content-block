@@ -137,8 +137,14 @@
 
         sdk.setContent('<img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=' + mapData.mapCentre + '&zoom=12&scale=1&size=' + mapData.mapWidth + 'x' + mapData.mapHeight + '&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of Albany, NY">');
 
+        let winsubmit = () => {
+            console.log('OnSubmit');
+
+        }
+
         window.onload = fetchData;
-        window.onunload = saveData;
+        window.onclose = saveData;
+        window.onsubmit = winsubmit;
     </script>
 
 </body>
