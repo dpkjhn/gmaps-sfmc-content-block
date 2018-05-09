@@ -64,7 +64,7 @@ let fetchData = () => {
     console.log(JSON.stringify(mapData));
 }
 
-saveData();
+// saveData();
 // sdk.setSuperContent(defaultContent, (newSuperContent) => {
 //     defaultContent = newSuperContent;
 // });
