@@ -35,9 +35,10 @@ let saveData = () => {
 
         //check for ampscript
         if (content.search('%%') === -1) {
-            content = defaultContent;
+            sdk.setSuperContent(defaultContent, (newSuperContent) => {});
         }
         sdk.setContent(content);
+        sdk.setSuperContent(content, (newSuperContent) => {});
     });
 
     console.log(JSON.stringify(mapData));
