@@ -36,8 +36,8 @@ let saveData = () => {
 
         //check for ampscript
         if (content.search('%%') != -1) {
-            // sdk.setSuperContent(defaultContent, (newSuperContent) => {});
-            content = defaultContent;
+            sdk.setSuperContent(defaultContent, (newSuperContent) => {});
+            // content = defaultContent;
         }
         sdk.setContent(content);
     });
