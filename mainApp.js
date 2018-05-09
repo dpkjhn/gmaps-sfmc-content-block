@@ -10,6 +10,7 @@ let mapData = {
     mapHeight: 300,
     mapWidth: 600,
     mapZoom: 14,
+    mapType: 'roadmap',
     mapMarker: {
         color: '0xff0000',
         label: 'London, UK'
@@ -17,7 +18,7 @@ let mapData = {
 };
 
 // let defaultContent = '<img width="100%" src="https://maps.googleapis.com/maps/api/staticmap?center=London,+UK&zoom=12&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map">';
-let defaultContent = '<img src="https://dj-gmaps-sfmc-content-nlock.herokuapp.com//dragIcon.png">';
+let defaultContent = '<img src="https://dj-gmaps-sfmc-content-nlock.herokuapp.com//dragIcon.png" style="display:block;margin-left:auto;margin-right:auto">';
 
 let saveData = () => {
     // console.log('Saving data...');
@@ -34,12 +35,11 @@ let saveData = () => {
         let content = '<img width="' + mapData.mapWidth + '" src="https://maps.googleapis.com/maps/api/staticmap?center=' + mapData.mapCentre + '&zoom=' + mapData.mapZoom + '&scale=1&size=' + mapData.mapWidth + 'x' + mapData.mapHeight + '&maptype=roadmap&format=png&visual_refresh=true&&markers=size:mid%7Ccolor:' + mapData.mapMarker.color + '%7Clabel:%7C' + mapData.mapCentre + '" alt="Google Map">';
 
         //check for ampscript
-        if (content.search('%%') === -1) {
+        if (content.search('%%') != -1) {
             // sdk.setSuperContent(defaultContent, (newSuperContent) => {});
             content = defaultContent;
         }
         sdk.setContent(content);
-        // sdk.setSuperContent(content, (newSuperContent) => {});
     });
 
     console.log(JSON.stringify(mapData));
@@ -65,7 +65,8 @@ let fetchData = () => {
     console.log(JSON.stringify(mapData));
 }
 
-// saveData();
+sdk.setContent(defaultContent);
+
 // sdk.setSuperContent(defaultContent, (newSuperContent) => {
 //     defaultContent = newSuperContent;
 // });
