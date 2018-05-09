@@ -21,7 +21,7 @@ let defaultContent = '<img width="600" src="https://maps.googleapis.com/maps/api
 let saveData = () => {
     // console.log('Saving data...');
 
-    mapData.apiKey = document.getElementById('apiKey').value;
+    // mapData.apiKey = document.getElementById('apiKey').value;
     mapData.mapWidth = document.getElementById('mapWidth').value;
     mapData.mapHeight = document.getElementById('mapHeight').value;
     mapData.mapCentre = document.getElementById('mapCentre').value;
@@ -45,7 +45,7 @@ let fetchData = () => {
     sdk.getData((data) => {
         if (Object.keys(data).length > 0) {
             mapData = data;
-            document.getElementById('apiKey').value = mapData.apiKey;
+            // document.getElementById('apiKey').value = mapData.apiKey;
             document.getElementById('mapWidth').value = mapData.mapWidth;
             document.getElementById('mapHeight').value = mapData.mapHeight;
             document.getElementById('mapCentre').value = mapData.mapCentre;
