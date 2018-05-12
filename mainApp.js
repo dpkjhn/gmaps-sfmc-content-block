@@ -17,11 +17,10 @@ let mapData = {
     }
 };
 
-// let defaultContent = '<img width="100%" src="https://maps.googleapis.com/maps/api/staticmap?center=London,+UK&zoom=12&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map">';
 let defaultContent = '<img src="https://dj-gmaps-sfmc-content-nlock.herokuapp.com//dragIcon.png" style="display:block;margin-left:auto;margin-right:auto">';
 
 let saveData = () => {
-    // console.log('Saving data...');
+    console.log('Saving data...');
 
     // mapData.apiKey = document.getElementById('apiKey').value;
     mapData.mapWidth = document.getElementById('mapWidth').value;
@@ -32,7 +31,7 @@ let saveData = () => {
 
     sdk.setData(mapData, (data) => {
         // mapData = data;
-        let content = `<img width="${mapData.mapWidth}" src="https://maps.googleapis.com/maps/api/staticmap?center='${mapData.mapCentre}&zoom=${mapData.mapZoom}&scale=1&size=${mapData.mapWidth}x${mapData.mapHeight}&maptype=${mapData.mapType}&format=png&visual_refresh=true&&markers=size:mid%7Ccolor:${mapData.mapMarker.color}%7Clabel:%7C${mapData.mapCentre}" alt="Google Map">`;
+        let content = `<img src="https://maps.googleapis.com/maps/api/staticmap?center='${mapData.mapCentre}&zoom=${mapData.mapZoom}&scale=1&size=${mapData.mapWidth}x${mapData.mapHeight}&maptype=${mapData.mapType}&format=png&visual_refresh=true&&markers=size:mid%7Ccolor:${mapData.mapMarker.color}%7Clabel:%7C${mapData.mapCentre}" alt="Google Map">`;
         let superContent = defaultContent;
 
         //check for ampscript
@@ -49,7 +48,7 @@ let saveData = () => {
 
 let fetchData = () => {
 
-    // console.log('Loading data...');
+    console.log('Loading data...');
 
     sdk.getData((data) => {
         if (Object.keys(data).length > 0) {
@@ -67,11 +66,6 @@ let fetchData = () => {
 
     console.log(JSON.stringify(mapData));
 }
-
-mapData.mapZoom = document.getElementById('mapZoom').value;
-console.log(mapData.mapZoom);
-
-
 
 window.onload = fetchData;
 window.onchange = saveData;
