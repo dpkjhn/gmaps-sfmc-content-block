@@ -10,7 +10,7 @@ let mapData = {
     mapHeight: 300,
     mapWidth: 600,
     mapZoom: 14,
-    mapType: 'roadmap',
+    mapType: 'satellite',
     mapMarker: {
         color: '0xff0000',
         label: 'London, UK'
@@ -32,16 +32,13 @@ let saveData = () => {
 
     sdk.setData(mapData, (data) => {
         // mapData = data;
-        // let content = '<img width="' + mapData.mapWidth + '" src="https://maps.googleapis.com/maps/api/staticmap?center=' + mapData.mapCentre + '&zoom=' + mapData.mapZoom + '&scale=1&size=' + mapData.mapWidth + 'x' + mapData.mapHeight + '&maptype=roadmap&format=png&visual_refresh=true&&markers=size:mid%7Ccolor:' + mapData.mapMarker.color + '%7Clabel:%7C' + mapData.mapCentre + '" alt="Google Map">';
         let content = `<img width="${mapData.mapWidth}" src="https://maps.googleapis.com/maps/api/staticmap?center='${mapData.mapCentre}&zoom=${mapData.mapZoom}&scale=1&size=${mapData.mapWidth}x${mapData.mapHeight}&maptype=${mapData.mapType}&format=png&visual_refresh=true&&markers=size:mid%7Ccolor:${mapData.mapMarker.color}%7Clabel:%7C${mapData.mapCentre}" alt="Google Map">`;
+        let superContent = defaultContent;
 
         //check for ampscript
-        if (content.search('%%') != -1) {
-            sdk.setSuperContent(defaultContent, (newSuperContent) => {});
-            // content = defaultContent;
-        }
-        sdk.setSuperContent(content, (newSuperContent) => {});
+        if (content.search('%%') === -1) { superContent = content; }
 
+        sdk.setSuperContent(superContent, (newSuperContent) => {});
         sdk.setContent(content);
     });
 
@@ -56,10 +53,10 @@ let fetchData = () => {
         if (Object.keys(data).length > 0) {
             mapData = data;
             // document.getElementById('apiKey').value = mapData.apiKey;
-            document.getElementById('mapWidth').value = mapData.mapWidth;
-            document.getElementById('mapHeight').value = mapData.mapHeight;
-            document.getElementById('mapCentre').value = mapData.mapCentre;
-            document.getElementById('mapZoom').value = mapData.mapZoom;
+            // document.getElementById('mapWidth').value = mapData.mapWidth;
+            // document.getElementById('mapHeight').value = mapData.mapHeight;
+            // document.getElementById('mapCentre').value = mapData.mapCentre;
+            // document.getElementById('mapZoom').value = mapData.mapZoom;
 
             // console.log('Found data!');
         }
@@ -73,6 +70,9 @@ let fetchData = () => {
 // sdk.setSuperContent(defaultContent, (newSuperContent) => {
 //     defaultContent = newSuperContent;
 // });
+
+saveData();
+console.log('init');
 
 window.onload = fetchData;
 window.onchange = saveData;
