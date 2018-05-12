@@ -18,58 +18,63 @@
 </head>
 
 <body>
-
     <div class="container">
-        <form class="row form-horizontal">
+        <form class="form-horizontal">
             <fieldset>
-
-                <!-- Form Name -->
                 <legend>Configure Map Parameters</legend>
 
                 <div class="row">
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="mapCentre">Map Centre</label>
-                        <div class="col-md-4">
-                            <input id="mapCentre" name="mapCentre" type="text" placeholder="Map Centre" class="form-control input-md" required="" value="London, UK">
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="col-xs-12 col-sm-12">
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="mapWidth">Width</label>
-                            <div class="col-md-2">
-                                <input id="mapWidth" name="mapWidth" type="text" placeholder="Width" class="form-control input-md" required="" value="600">
-
+                            <label class="col-sm-4 control-label" for="mapCentre">Map Centre</label>
+                            <div class="col-sm-4">
+                                <input id="mapCentre" name="mapCentre" type="text" placeholder="Map Centre" class="form-control input-md" required="" value="London, UK">
                             </div>
                         </div>
                     </div>
-                    <!-- Text input-->
+                </div>
+                <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="mapHeight">Height</label>
-                            <div class="col-md-2">
+                            <label class="col-sm-4 control-label" for="mapWidth">Width</label>
+                            <div class="col-sm-4">
+                                <input id="mapWidth" name="mapWidth" type="text" placeholder="Width" class="form-control input-md" required="" value="600">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label" for="mapHeight">Height</label>
+                            <div class="col-sm-4">
                                 <input id="mapHeight" name="mapHeight" type="text" placeholder="Height" class="form-control input-md" required="" value="300">
                             </div>
                         </div>
                     </div>
                 </div>
-
-
                 <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="col-xs-12 col-sm-12">
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="mapZoom">Zoom</label>
-                            <div class="col-md-2">
+                            <label class="col-sm-4 control-label" for="mapZoom">Zoom</label>
+                            <div class="col-sm-2">
                                 <input id="mapZoom" name="mapZoom" type="text" placeholder="Zoom" class="form-control input-md" required="" value="13">
-
                             </div>
                         </div>
                     </div>
+                    <div class="col-xs-12 col-sm-12">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label" for="mapZoom">Type</label>
+                            <div class="col-sm-2">
+                                <select id="mapType" name="mapType" class="form-control">
+                                    <option value="roadmap">Roadmap (Defualt Style)</option>
+                                    <option value="satellite">Satellite</option>
+                                    <option value="hybrid">Hybrid</option>
+                                    <option value="terrain">Terrain</option>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
     </div>
 
 

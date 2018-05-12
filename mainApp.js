@@ -28,7 +28,7 @@ let saveData = () => {
     mapData.mapHeight = document.getElementById('mapHeight').value;
     mapData.mapCentre = document.getElementById('mapCentre').value;
     mapData.mapZoom = document.getElementById('mapZoom').value;
-
+    mapData.mapType = document.getElementById('mapType').value;
 
     sdk.setData(mapData, (data) => {
         // mapData = data;
@@ -52,11 +52,14 @@ let fetchData = () => {
     sdk.getData((data) => {
         if (Object.keys(data).length > 0) {
             mapData = data;
-            document.getElementById('apiKey').value = mapData.apiKey;
+
+            // document.getElementById('apiKey').value = mapData.apiKey;
             document.getElementById('mapWidth').value = mapData.mapWidth;
             document.getElementById('mapHeight').value = mapData.mapHeight;
             document.getElementById('mapCentre').value = mapData.mapCentre;
             document.getElementById('mapZoom').value = mapData.mapZoom;
+            document.getElementById('mapType').value = mapData.mapType;
+
 
             // console.log('Found data!');
         }
@@ -66,7 +69,7 @@ let fetchData = () => {
 }
 
 // init on first load
-saveData();
+// saveData();
 
 window.onload = fetchData;
 window.onchange = saveData;
