@@ -40,6 +40,8 @@ let saveData = () => {
             sdk.setSuperContent(defaultContent, (newSuperContent) => {});
             // content = defaultContent;
         }
+        sdk.setSuperContent(content, (newSuperContent) => {});
+
         sdk.setContent(content);
     });
 
