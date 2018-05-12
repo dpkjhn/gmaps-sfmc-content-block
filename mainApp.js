@@ -36,7 +36,9 @@ let saveData = () => {
         let superContent = defaultContent;
 
         //check for ampscript
-        if (content.search('%%') === -1) { superContent = content; }
+        if (content.search('%%') === -1) {
+            superContent = content;
+        }
 
         sdk.setSuperContent(superContent, (newSuperContent) => {});
         sdk.setContent(content);
@@ -59,8 +61,6 @@ let fetchData = () => {
             document.getElementById('mapCentre').value = mapData.mapCentre;
             document.getElementById('mapZoom').value = mapData.mapZoom;
             document.getElementById('mapType').value = mapData.mapType;
-
-
             // console.log('Found data!');
         }
     });
@@ -68,8 +68,10 @@ let fetchData = () => {
     console.log(JSON.stringify(mapData));
 }
 
-// init on first load
-// saveData();
+mapData.mapZoom = document.getElementById('mapZoom').value;
+console.log(mapData.mapZoom);
+
+
 
 window.onload = fetchData;
 window.onchange = saveData;

@@ -1,10 +1,9 @@
 let express = require('express');
 
 let app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
-console.log('app started');
-app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+app.listen(PORT, () => console.log(`App started on Port ${PORT}`));
 
 app.use(express.static('.'));
 
