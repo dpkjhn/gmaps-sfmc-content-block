@@ -39,8 +39,8 @@ let saveData = () => {
             superContent = content;
         }
 
-        sdk.setSuperContent(superContent, (newSuperContent) => {});
-        sdk.setContent(content);
+        sdk.setSuperContent(encodeURI(superContent), (newSuperContent) => {});
+        sdk.setContent(encodeURI(content));
     });
 
     console.log(JSON.stringify(mapData));
