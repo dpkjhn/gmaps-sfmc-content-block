@@ -39,6 +39,8 @@ let saveData = () => {
             superContent = content;
         }
 
+        console.log('content: ' + content);
+
         sdk.setSuperContent(decodeURI(superContent), (newSuperContent) => {});
         sdk.setContent(decodeURI(content));
     });
