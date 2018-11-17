@@ -24,6 +24,17 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12">
                         <div class="form-group">
+                            <label class="col-sm-4 control-label" for="mapCentre">API Key</label>
+                            <div class="col-sm-4">
+                                <input id="apiKey" name="apiKey" type="password" placeholder="Google Maps Static API Key" data-toggle="tooltip" title="You now need an API key! " class="form-control input-md" required="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12">
+                        <div class="form-group">
                             <label class="col-sm-4 control-label" for="mapCentre">Map Centre</label>
                             <div class="col-sm-4">
                                 <input id="mapCentre" name="mapCentre" type="text" placeholder="Map Centre" class="form-control input-md" required="" value="London, UK">
@@ -81,11 +92,14 @@
 
     </div>
 
-    <script src="/blocksdk.js"></script>
-    <script src="/mainApp.js"></script>
+    <script src="blocksdk.js"></script>
+    <script src="mainApp.js"></script>
 
 
     <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
         let mapZoom = document.getElementById('mapZoom').value;
         console.log(mapZoom);
     </script>

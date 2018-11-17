@@ -4,9 +4,12 @@
 
 let sdk = new window.sfdc.BlockSDK(); //initalize SDK
 
+// let static_key = process.env.STATIC_MAP_KEY;
+let static_key = 'key';
+
 let mapData = {
-    apiKey: '',
-    mapCentre: 'London, UK',
+    apiKey: static_key,
+    mapCentre: 'London,UK',
     mapHeight: 300,
     mapWidth: 600,
     mapZoom: 14,
@@ -22,7 +25,7 @@ let defaultContent = '<img src="https://dj-gmaps-sfmc-content-nlock.herokuapp.co
 let saveData = () => {
     console.log('Saving data...');
 
-    // mapData.apiKey = document.getElementById('apiKey').value;
+    mapData.apiKey = document.getElementById('apiKey').value;
     mapData.mapWidth = document.getElementById('mapWidth').value;
     mapData.mapHeight = document.getElementById('mapHeight').value;
     mapData.mapCentre = document.getElementById('mapCentre').value;
@@ -31,7 +34,7 @@ let saveData = () => {
 
     sdk.setData(mapData, (data) => {
         // mapData = data;
-        let content = `<img src="https://maps.googleapis.com/maps/api/staticmap?center='${mapData.mapCentre}&zoom=${mapData.mapZoom}&scale=1&size=${mapData.mapWidth}x${mapData.mapHeight}&maptype=${mapData.mapType}&format=png&visual_refresh=true&&markers=size:mid%7Ccolor:${mapData.mapMarker.color}%7Clabel:%7C${mapData.mapCentre}&key=${process.env.STATIC_MAP_KEY}" alt="Google Map">`;
+        let content = `<img src="https://maps.googleapis.com/maps/api/staticmap?center='${mapData.mapCentre}&zoom=${mapData.mapZoom}&scale=1&size=${mapData.mapWidth}x${mapData.mapHeight}&maptype=${mapData.mapType}&format=png&visual_refresh=true&&markers=size:mid%7Ccolor:${mapData.mapMarker.color}%7Clabel:%7C${mapData.mapCentre}&key=${mapData.apiKey}" alt="Google Map">`;
         let superContent = defaultContent;
 
         //check for ampscript
@@ -43,9 +46,11 @@ let saveData = () => {
 
         sdk.setSuperContent(decodeURI(superContent), (newSuperContent) => {});
         sdk.setContent(decodeURI(content));
+
     });
 
     console.log(JSON.stringify(mapData));
+
 }
 
 let fetchData = () => {
@@ -56,7 +61,7 @@ let fetchData = () => {
         if (Object.keys(data).length > 0) {
             mapData = data;
 
-            // document.getElementById('apiKey').value = mapData.apiKey;
+            document.getElementById('apiKey').value = mapData.apiKey;
             document.getElementById('mapWidth').value = mapData.mapWidth;
             document.getElementById('mapHeight').value = mapData.mapHeight;
             document.getElementById('mapCentre').value = mapData.mapCentre;
