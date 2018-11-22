@@ -5,7 +5,7 @@
 let sdk = new window.sfdc.BlockSDK(); //initalize SDK
 
 // let static_key = process.env.STATIC_MAP_KEY;
-let static_key = 'key';
+let static_key = '';
 
 let mapData = {
     apiKey: static_key,
@@ -35,7 +35,14 @@ let saveData = () => {
     sdk.setData(mapData, (data) => {
         // mapData = data;
         let content = `<img src="https://maps.googleapis.com/maps/api/staticmap?center='${mapData.mapCentre}&zoom=${mapData.mapZoom}&scale=1&size=${mapData.mapWidth}x${mapData.mapHeight}&maptype=${mapData.mapType}&format=png&visual_refresh=true&&markers=size:mid%7Ccolor:${mapData.mapMarker.color}%7Clabel:%7C${mapData.mapCentre}&key=${mapData.apiKey}" alt="Google Map">`;
+        let noKeyContent = `<p>To use the Maps Static API, you must get an API key from Google and enable billing. Don't worry there is a free tier :)</p>
+        <p><a href="https://cloud.google.com/maps-platform/#get-started">Grab one here</a></p>`;
         let superContent = defaultContent;
+
+        //check for no API Key
+        if (mapData.apiKey.length < 5) {
+            superContent = noKeyContent;
+        }
 
         //check for ampscript
         if (content.search('%%') === -1) {
