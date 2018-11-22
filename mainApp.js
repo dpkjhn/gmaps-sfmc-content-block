@@ -4,8 +4,8 @@
 
 let sdk = new window.sfdc.BlockSDK(); //initalize SDK
 
-// let static_key = process.env.STATIC_MAP_KEY;
-let static_key = 'key';
+let static_key = process.env.STATIC_MAP_KEY;
+// let static_key = 'key';
 
 let mapData = {
     apiKey: static_key,
